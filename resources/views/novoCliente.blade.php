@@ -52,6 +52,15 @@
                         <button type="cancel" class="btn btn-danger btn-sm">Cancelar</button>
                     </form>
                 </div>
+                @if (isset($errors) and count($errors) > 0)
+                    <div class="card-footer">
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger" role="alert">
+                                {{$error}}
+                            </div>
+                        @endforeach
+                    </div>                    
+                @endif
             </div>
         </div>
     </main>
