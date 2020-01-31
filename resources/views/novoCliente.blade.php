@@ -30,37 +30,50 @@
                         @csrf
                         <div class="form-group">
                             <label for="nome">Nome do Cliente</label>
-                            <input type="text" id="nome" class="form-control" name="nome" placeholder="Nome do cliente">
+                            <input type="text" id="nome" class="form-control {{$errors->has('nome') ? 'is-invalid' : ''}}" 
+                                    name="nome" placeholder="Nome do cliente">
+                            @if ($errors->has('nome'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('nome') }}
+                                </div>
+                            @endif
                         </div>
+                        
 
                         <div class="form-group">
                             <label for="idade">Idade</label>
-                            <input type="text" id="idade" class="form-control" name="idade" placeholder="Idade">
+                            <input type="text" id="idade" class="form-control {{$errors->has('idade') ? 'is-invalid' : ''}}" name="idade" placeholder="Idade">
+                            @if ($errors->has('idade'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('idade') }}
+                                </div>
+                            @endif
                         </div>
 
                         <div class="form-group">
                             <label for="endereco">Endereço</label>
-                            <input type="text" id="endereco" class="form-control" name="endereco" placeholder="Endereço">
+                            <input type="text" id="endereco" class="form-control {{$errors->has('endereco') ? 'is-invalid' : ''}}" name="endereco" placeholder="Endereço">
+                            @if ($errors->has('endereco'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('endereco') }}
+                                </div>
+                            @endif
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" id="email" class="form-control" name="email" placeholder="Email">
+                            <input type="text" id="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" name="email" placeholder="Email">
+                            @if ($errors->has('email'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
                         <button type="cancel" class="btn btn-danger btn-sm">Cancelar</button>
                     </form>
                 </div>
-                @if (isset($errors) and count($errors) > 0)
-                    <div class="card-footer">
-                        @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger" role="alert">
-                                {{$error}}
-                            </div>
-                        @endforeach
-                    </div>                    
-                @endif
             </div>
         </div>
     </main>
